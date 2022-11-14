@@ -1,6 +1,6 @@
-# Kubernetes Cluster Kurulumu
+# Kubernetes Cluster
 
-
+[image]https://github.com/hae-shin/kubernetes-cluster/blob/main/kubernetes-vertical.png
 
 ### Merhabalar
 
