@@ -1,1 +1,34 @@
 
+
+# Kubernetes Nedir ?
+
+Kubernetes (k8s) Google tarafından geliştirilen bir projedir ve açık kaynaktır. Kubernetes'in temel işlevi konteyner'da çalışmak üzere geliştirilen uygulamaları orkestra etmektir. Konteyner teknolojisini ve orkestra etmek işlevini anlatmadan önce uygulama teknolojilerindeki gelişim süreçlerinden bahsedelim ve Kubernetes teknolojisin bu gelişim sürecine nasıl dahil olduğunu anlatalım.
+
+![image](https://user-images.githubusercontent.com/116150600/201118995-c5b4283f-97ef-4284-99f1-47bc9709b7ab.png)
+
+Yukarıdaki görselde uygulamaların deploy edilme süreçlerindeki teknik değişiklikleri geleneksel(*traditional*), sanallaştırılmış(*virtualizel*) ve konteyner(*container*) olmak üzere çağlara ayrıldığını görüyoruz. Bu değişiklik teknolojinin genel ilerleyişinde altyapı, otomasyon ve güvenlik vb. gibi başlıklarda çok ciddi farklılıklar yaratmıştır. Kubernetesin temelleri ve varlık koşulu konteyner teknolojisine bağlıdır. 
+
+- **Geleneksel Çağ:** Görselde açık biçimde belirtildiği üzere bir donanım o donanımı yönettiğimiz işlteim sistemi, işletim sisteminin üzerinde de bir veya daha fazla olmak üzere uygulamalar bulunuyor. Burada uygulamaların donanımın ve işletim sisteminin değişkenlerine bağımlı olduğu bir durum söz konusu. Örneğin tek fiziksel ortamda birden fazla uygulama çalıştırmak istediğinizde uygulamaların kaynak kullanımı birbirleri alehine çakışabiliyor. Bu durumda yapılacak tek şey uygulamalardan birini yeni bir fiziksel ortama aktarmak oluyor. Fakat bu hem donanım hem insan emeğinin kullanımı açısından korkunç bir verimsizlik ve angarya yaratıyor.
+
+- **Sanallaştırma Çağı:** Yine görselden hareketle sanallaştırma teknolojisinin geliştirilmesiyle hypervisor aracılığıyla donanım kaynaklarının bölümlendirilebildiğini bu sayede tek fiziksel makinede birden fazla sanal makinenin oluşturulabildiğini ve bu makineler üzerinde birden fazla uygulamanın çalıştırılabildiğini görüyoruz. Bu hem fizkiksel hem insan kaynağını kullanımı açısından çok ciddi bir teknolojik ilerleme olsa da hala uygulama merkezli bir mimari geliştirememiş oluyor. Uygulamalar bu sayede fiziksel makinenin belirleyiciliğinden sanal makineler araclığıyla kurtulmuş olsa da işletim sistemi tarafındaki bağımlılıklara hala takılıyorlar. Örneğin aynı sanal birden fazla uygulama çalışacak fakat uygulamanın birisi PHP'nin bir versiyonunda çalışırken diğeri PHP'nin farklı bir versiyonu ile çalışıyor. Durum bu şekilde olduğunda hiç gerekmediği halde yeni bir sanal makine oluşturup uygulamayı oraya taşımanız gerekbilir. Bu durum zamanla yönetilebilir olmaktan çıkar ve verimsizlik burada da başgösterir.
+
+- **Konteyner Çağı:** Burada ise karşımıza **Conteyner Runtime** kavramı çıkıyor. Konteyner çalışma ortamı olarak Türkçe'leştirilebilecek bu kavram 
+
+
+- Kubernetes cluster ***Self-Healing***. Eğer konteynerlerinizden birisi ölürse kubernetes ortamı hemen tekrardan yenisi oluşturuyor.
+
+- Kubernetes ***Horizontal Scaling*** sağlar. Mevcut kaynak durumunuza göre konteynerlerin sayısını arttırıp azaltabiliyor.
+
+- Kubernetes ***Compute Scheduling*** sağlar. Mevcut kaynak ihtiyacının belirlenmesini ve konteyner özelinde kaynakların atanmasını otomatikleştirir.
+
+- Kubernetes ***LoadBalance*** sağlar. Mevcut uygulamalar üzerindeki yükü üzerinde çalıştıkları konteynerler arasında dağıtır.
+
+- Kubernetes ***Nameserver*** sağlar. Mevcut konteynerlere erişebilmek için DNS tanımları yapar.
+
+- Kubernetes otomatik ***Rollout/Rollback*** sağlar. Kubernetes her yeni deployment'da veya mevcut deployment'daki her değişiklikte önceden belirlenmiş desired duruma göre otomatik olarak bütün instance'ları ve bileşenleri yeniden oluşturur. Deployment sırasında bir sorun yaşandığında ise otomatik olarak bir önceki sorunsuz çalışan deployment'a geri çekilir.
+
+- Kubernetes gizli bilgilerin ve yapılandırma ayarlarının yönetimini sağlar. Uygulama yapaılandırma ayarları, parolalar, API anahtarları, sertifikalar vb bilgilerin yönetimini otomatikleştirir.
+
+- Kubernetes ***Volume Management*** sağlar. Uygulamaların kullanımına göre depolama ihtiyaçlarını karşılar ve otomatikleştirir.
+
+**Kaynak:** https://kubernetes.io/docs/concepts/overview/
