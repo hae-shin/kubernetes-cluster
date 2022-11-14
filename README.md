@@ -23,3 +23,7 @@
     * [Node Bileşenleri](./dökümanlar/worker-node.md)
         * [kubelet](./dökümanlar/kubelet.md)
         * [kube-proxy](./dökümanlar/kube-proxy.md)
+* Cluster Kurulumu
+    * [**kubeadm**](./dökümanlar/kubeadm.md)
+    * [**monitoring**](./dökümanlar/monitoring.md)
+    * [**kubespray**](./dökümanlar/kubespray.md)
