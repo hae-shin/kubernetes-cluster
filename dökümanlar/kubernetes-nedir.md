@@ -5,6 +5,12 @@ Kubernetes (k8s) Google tarafından geliştirilen bir projedir ve açık kaynakt
 
 ![image](https://user-images.githubusercontent.com/116150600/201118995-c5b4283f-97ef-4284-99f1-47bc9709b7ab.png)
 
+Yukarıdaki görselde uygulamaların deploy edilme süreçlerindeki teknik değişiklikleri geleneksel(*traditional*), sanallaştırılmış(*virtualizel*) ve konteyner(*container*) olmak üzere çağlara ayrıldığını görüyoruz. Bu değişiklik teknolojinin genel ilerleyişinde altyapı, otomasyon ve güvenlik vb. gibi başlıklarda çok ciddi farklılıklar yaratmıştır. Kubernetesin temelleri ve varlık koşulu konteyner teknolojisine bağlıdır. 
+
+- **Geleneksel Çağ:** Görselde açık biçimde belirtildiği üzere bir donanım o donanımı yönettiğimiz işlteim sistemi, işletim sisteminin üzerinde de bir veya daha fazla olmak üzere uygulamalar bulunuyor. Burada uygulamaların donanımın ve işletim sisteminin değişkenlerine bağımlı olduğu bir durum söz konusu. Örneğin tek fiziksel ortamda birden fazla uygulama çalıştırmak istediğinizde uygulamaların kaynak kullanımı birbirleri alehine çakışabiliyor. Bu durumda yapılacak tek şey uygulamalardan birini yeni bir fiziksel ortama aktarmak oluyor. Fakat bu hem donanım hem insan emeğinin kullanımı açısından korkunç bir verimsizlik ve angarya yaratıyor.
+
+- **Sanallaştırma Çağı:** Yine görselden hareketle sanallaştırma teknolojisinin geliştirilmesiyle hypervisor aracılığıyla donanım kaynaklarının bölümlendirilebildiğini bu sayede tek fiziksel makinede birden fazla sanal makinenin oluşturulabildiğini ve bu makineler üzerinde birden fazla uygulamanın çalıştırılabildiğini görüyoruz. Bu hem fizkiksel hem insan kaynağını kullanımı açısından çok ciddi bir teknolojik ilerleme olsa da hala uygulama merkezli bir mimari geliştirememiş oluyor. Uygulamalar bu sayede fiziksel makinenin belirleyiciliğinden sanal makineler araclığıyla kurtulmuş olsa da işletim sistemi tarafındaki bağımlılıklara takılıyorlar.
+
 
 - Kubernetes cluster ***Self-Healing***. Eğer konteynerlerinizden birisi ölürse kubernetes ortamı hemen tekrardan yenisi oluşturuyor.
 
