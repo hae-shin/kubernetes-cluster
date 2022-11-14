@@ -11,15 +11,15 @@
 <!-- docs/_sidebar.md -->
 
 * Başlangıç
-    * [Kubernetes Nedir](./dökümanlar/kubernetes-nedir.md)
-    * [Kubernetes Cluster Nedir](./dökümanlar/kubernetes-cluster-nedir.md)
+    * [Kubernetes Nedir ?](./dökümanlar/kubernetes-nedir.md)
+    * [Kubernetes Cluster Nedir ?](./dökümanlar/kubernetes-cluster-nedir.md)
 
 * Kubernetes Bileşenleri
-    * [Control Plane Elemanları](./dökümanlar/control-plane.md)
+    * [Control Plane Bileşenleri](./dökümanlar/control-plane.md)
         * [api-server](./dökümanlar/api-server.md)
         * [etcd](./dökümanlar/control-plane?id=etcd.md)
         * [controller-manager](./dökümanlar/controller-manager.md)
         * [scheduler](./dökümanlar/scheduler.md)
-    * [Worker Node Elemanları](./dökümanlar/worker-node.md)
+    * [Node Bileşenleri](./dökümanlar/worker-node.md)
         * [kubelet](./dökümanlar/kubelet.md)
         * [kube-proxy](./dökümanlar/kube-proxy.md)
