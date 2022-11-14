@@ -24,6 +24,6 @@
         * [kubelet](./dökümanlar/kubelet.md)
         * [kube-proxy](./dökümanlar/kube-proxy.md)
 * Cluster Kurulumu
-    * [**kubeadm**](./dökümanlar/kubeadm.md)
-    * [**monitoring**](./dökümanlar/monitoring.md)
-    * [**kubespray**](./dökümanlar/kubespray.md)
+    * [**kubeadm**](./kubeadm/kubeadm.md)
+    * [**monitoring**](./kubeadm/monitoring.md)
+    * [**kubespray**](./kubespray/kubespray.md)
