@@ -7,7 +7,6 @@ Kelime anlamından yola çıkarak açıklayacak olursak; bir üzüm salkımını
 ![image](https://user-images.githubusercontent.com/116150600/201916850-0030bbd4-139f-4b56-9bba-4b1f85ca9c27.png)
 
 
-
-
+**Kaynak:** https://kubernetes.io/docs/concepts/architecture/
 
 
