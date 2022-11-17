@@ -1,7 +1,9 @@
 
 # Node Nedir ?
 
-Node'lar Control Plane tarafından yönetilirler. Uygulamalar üzerinde koştuğu konteyner çalışma ortamını sağlarlar. İş yükünü üstlenen Node'lara Worker Node denir. Control Plane de bir Node üzerinde çalışır. Cluster ölçeğindeki yönetici rolü göz önünde bulundurularak üzerinde çalıştığı Node'un Master ünvanı almasını sağlar. ![kubelet](https://github.com/hae-shin/kubernetes-cluster/blob/main/d%C3%B6k%C3%BCmanlar/kubelet.md) ve ![kubeproxy](https://github.com/hae-shin/kubernetes-cluster/blob/main/d%C3%B6k%C3%BCmanlar/kube-proxy.md) bileşenlerini bünyesinde barındırır.
+Node'lar Control Plane tarafından yönetilirler. Uygulamalar üzerinde koştuğu konteyner çalışma ortamını sağlarlar. İş yükünü üstlenen Node'lara Worker Node denir. Control Plane de bir Node üzerinde çalışır. Cluster ölçeğindeki yönetici rolü göz önünde bulundurularak üzerinde çalıştığı Node'un Master ünvanı almasını sağlar. 
+
+![kubelet](https://github.com/hae-shin/kubernetes-cluster/blob/main/d%C3%B6k%C3%BCmanlar/kubelet.md) ve ![kubeproxy](https://github.com/hae-shin/kubernetes-cluster/blob/main/d%C3%B6k%C3%BCmanlar/kube-proxy.md) bileşenlerini bünyesinde barındırır.
 
 
 
