@@ -21,7 +21,7 @@
         * [kube-scheduler](./dökümanlar/kube-scheduler.md)
         * [kube-controller-manager](./dökümanlar/kube-controller-manager.md)
         * [cloud-controller-manager](./dökümanlar/cloud-controller-manager.md)
-    * [Node ve Bileşenleri](./dökümanlar/worker-node.md)
+    * [Node ve Bileşenleri](./dökümanlar/node.md)
         * [kubelet](./dökümanlar/kubelet.md)
         * [kube-proxy](./dökümanlar/kube-proxy.md)
 * Cluster Kurulumu
