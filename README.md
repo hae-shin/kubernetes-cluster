@@ -17,7 +17,7 @@
 * Kubernetes Bileşenleri
     * [Control Plane ve Bileşenleri](./dökümanlar/control-plane.md)
         * [api-server](./dökümanlar/api-server.md)
-        * [etcd](./dökümanlar/control-plane?id=etcd.md)
+        * [etcd](./dökümanlar/etcd.md)
         * [controller-manager](./dökümanlar/controller-manager.md)
         * [scheduler](./dökümanlar/scheduler.md)
     * [Node ve Bileşenleri](./dökümanlar/worker-node.md)
