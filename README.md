@@ -16,10 +16,11 @@
 
 * Kubernetes Bileşenleri
     * [Control Plane ve Bileşenleri](./dökümanlar/control-plane.md)
-        * [api-server](./dökümanlar/api-server.md)
+        * [kube-apiserver](./dökümanlar/kube-apiserver.md)
         * [etcd](./dökümanlar/etcd.md)
-        * [controller-manager](./dökümanlar/controller-manager.md)
-        * [scheduler](./dökümanlar/scheduler.md)
+        * [kube-scheduler](./dökümanlar/kube-scheduler.md)
+        * [kube-controller-manager](./dökümanlar/kube-controller-manager.md)
+        * [cloud-controller-manager ](./dökümanlar/cloud-controller-manager .md)
     * [Node ve Bileşenleri](./dökümanlar/worker-node.md)
         * [kubelet](./dökümanlar/kubelet.md)
         * [kube-proxy](./dökümanlar/kube-proxy.md)
