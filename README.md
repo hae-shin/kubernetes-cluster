@@ -26,5 +26,6 @@
         * [kube-proxy](./dökümanlar/kube-proxy.md)
 * Cluster Kurulumu
     * [**kubeadm**](./kubeadm/kubeadm.md)
+       * [**Gerekli Sistem Kaynakları**](./kubeadm/gereklisistemkaynakları.md)
     * [**monitoring**](./kubeadm/monitoring.md)
     * [**kubespray**](./kubespray/kubespray.md)
