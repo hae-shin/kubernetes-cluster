@@ -27,5 +27,6 @@
 * Cluster Kurulumu
     * [**kubeadm**](./kubeadm/kubeadm.md)
        * [**Gerekli Sistem Kaynakları**](./kubeadm/gereklisistemkaynakları.md)
+       * [**Cluster Yapısı**](./kubeadm/gereklisistemkaynakları.md)
     * [**monitoring**](./kubeadm/monitoring.md)
     * [**kubespray**](./kubespray/kubespray.md)
