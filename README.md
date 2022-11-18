@@ -28,5 +28,6 @@
     * [**kubeadm**](./kubeadm/kubeadm.md)
        * [**Gerekli Sistem Kaynakları**](./kubeadm/gereklisistemkaynakları.md)
        * [**Cluster Yapısı**](./kubeadm/clusteryapısı.md)
+       * [**Host Dosyalarının Düzenlenmesi](./kubeadm/hostdosyalarınındüzenlenmesi.md)
     * [**monitoring**](./kubeadm/monitoring.md)
     * [**kubespray**](./kubespray/kubespray.md)
