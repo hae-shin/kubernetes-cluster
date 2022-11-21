@@ -27,3 +27,5 @@ haeshin@master-ubuntu-2204-k8s:~$ sudo cat /etc/fstab
 /dev/disk/by-uuid/a8ad5fbe-816a-4d75-ad98-7710f1bacedf /boot ext4 defaults 0 1
 /swap.img       none    swap    sw      0       0
  </pre></code>
+
+**Kaynak:** https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#before-you-begin
