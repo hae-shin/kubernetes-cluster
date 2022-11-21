@@ -13,3 +13,5 @@ Ardından değişiklikleri görebilmesi için sysctl'i reload ediyoruz.
 <pre><code>
 sudo sysctl --system
 </pre></code>
+
+**Kaynak:** https://kubernetes.io/docs/setup/production-environment/container-runtimes/#install-and-configure-prerequisites
