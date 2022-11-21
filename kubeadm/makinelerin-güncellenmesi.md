@@ -10,3 +10,6 @@ Güncelleme ve yükseltme sonrası sunucuların yeniden başlatılması gerekiyo
 <pre><code>
 sudo reboot -f
 </pre></code>
+
+
+**Kaynak:** https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#before-you-begin
