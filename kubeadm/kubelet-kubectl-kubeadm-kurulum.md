@@ -10,7 +10,7 @@ echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt
 </pre></code>
 
 Güncellemeyi tekrar yapıp gerekli paketleri yüklüyoruz.
-</pre></code>
+<pre><code>
 sudo apt update
 sudo apt install wget curl vim git kubelet kubeadm kubectl -y
 </pre></code>
