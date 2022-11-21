@@ -1,6 +1,8 @@
 # Cluster Yapısı
 
-Burada bir Master iki Worker Node olmak üzere 3 adet Node kullanacağız.
+İşletim sistemi olarak **Ubuntu 22.04 LTS** 'i seçtik.
+
+Burada bir **Master** iki **Worker** olmak üzere 3 adet Node kullanacağız.
 
 | Sunucu Rolleri | Sunucu Hostname'leri      | Kaynaklar      |	IP Adresi    |
 | -------------- | --------------------      | ---------      | ---------    |
