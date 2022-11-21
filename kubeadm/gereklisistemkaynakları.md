@@ -7,3 +7,6 @@ Kubernetes Cluster'ın sağlıklı biçimde çalışabilmesi için;
 - Node'lar arası tam erişim
 
 sağlanmalıdır.
+
+
+**Kaynak:** https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#before-you-begin
