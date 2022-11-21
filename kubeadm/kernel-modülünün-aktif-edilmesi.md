@@ -7,3 +7,4 @@ sudo modprobe overlay
 sudo modprobe br_netfilter
 </pre></code>
 
+**Kaynak:** https://kubernetes.io/docs/setup/production-environment/container-runtimes/#install-and-configure-prerequisites
