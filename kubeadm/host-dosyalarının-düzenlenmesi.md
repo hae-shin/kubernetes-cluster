@@ -15,6 +15,10 @@ sudo vi /etc/hosts
 Değişiklikten sonra ping komutu ile kontrol edilebilir.
 
 <pre><code>
+ping worker-1-ubuntu-22.04-k8s
+</pre></code>
+
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ ping worker-1-ubuntu-22.04-k8s
 PING worker-1-ubuntu-22.04-k8s (192.168.1.26) 56(84) bytes of data.
 64 bytes from worker-1-ubuntu-22.04-k8s (192.168.1.26): icmp_seq=1 ttl=64 time=0.630 ms
