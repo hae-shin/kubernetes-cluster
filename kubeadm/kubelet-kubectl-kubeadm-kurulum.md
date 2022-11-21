@@ -35,4 +35,6 @@ kubeadm version: &version.Info{Major:"1", Minor:"25", GitVersion:"v1.25.3", GitC
 </pre></code>
 
 
+**Kaynek:** https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl
+
 
