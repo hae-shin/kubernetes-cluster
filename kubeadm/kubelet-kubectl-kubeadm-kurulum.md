@@ -25,7 +25,12 @@ kubeadm set on hold.
 kubectl set on hold.
 </pre></code>
 
-Aşağıdaki gibi versiyon kotrolü yapabiliriz
+Aşağıdaki gibi versiyon kotrolü yapabiliriz.
+
+<pre><code>
+kubectl version --client && kubeadm version
+</pre></code>
+
 <pre><code>
 haeshin@worker-2-ubuntu-2204-k8s:~$ kubectl version --client && kubeadm version
 WARNING: This version information is deprecated and will be replaced with the output from kubectl version --short.  Use --output=yaml|json to get the full version.
