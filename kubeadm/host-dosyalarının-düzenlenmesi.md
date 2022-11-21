@@ -35,4 +35,4 @@ PING worker-2-ubuntu-22.04-k8s (192.168.1.27) 56(84) bytes of data.
 rtt min/avg/max/mdev = 0.659/0.784/0.922/0.107 ms
 </pre></code>
 
-**Kaynak:** https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+**Kaynak:** https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#before-you-begin
