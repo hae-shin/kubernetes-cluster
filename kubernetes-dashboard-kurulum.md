@@ -1,5 +1,8 @@
 ## Kubernetes Dashboard Kurulum
 
+Kubernetes Dashboard uygulamaları cluster üzerinde deploy ve troubleshoot etmek için kullanılan bir arayüzdür. Bunun dışında cluster kaynaklarını da yönetmek için kullanılabiliyor.
+
+Aşağıdaki adresten Kubernetes Dashboard kurulumu için hazır bir ***yaml*** çekiyoruz sunucumuza.
 
 <pre><code>
 wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
@@ -19,10 +22,7 @@ recommended.yaml                         100%[==================================
 2022-11-10 14:50:30 (3.06 MB/s) - ‘recommended.yaml’ saved [7621/7621]
 </pre></code>
 
-<pre><code>
-haeshin@master-ubuntu-2204-k8s:~$ ls
-kube-flannel.yml  recommended.yaml
-</pre></code>
+Ardından dosyayı Kubernetes Cluster'da uygulamaya koyuyoruz. Gerekli namespace'den service'e configmap'e kadar bir çok Kubernetes nesnesini oluşturuyor.
 
 <pre><code>
 kubectl apply -f recommended.yaml 
@@ -45,6 +45,9 @@ deployment.apps/kubernetes-dashboard created
 service/dashboard-metrics-scraper created
 deployment.apps/dashboard-metrics-scraper created
 </pre></code>
+
+kubernetes-dashboard namespace'inde çalışan pod'ları aşağıdaki gibi listeleyebiliriz.
+
 <pre><code>
 kubectl get pods -n kubernetes-dashboard
 </pre></code>
@@ -54,6 +57,9 @@ NAME                                         READY   STATUS    RESTARTS   AGE
 dashboard-metrics-scraper-64bcc67c9c-jvhfv   1/1     Running   0          49s
 kubernetes-dashboard-66c887f759-4qdkv        1/1     Running   0          49s
 </pre></code>
+
+kubernetes-dashboard namespace'inde çalışan service'leri aşağıdaki gibi listeleyebiliriz.
+
 <pre><code>
 kubectl get svc -n kubernetes-dashboard
 </pre></code>
@@ -63,6 +69,7 @@ NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)  
 dashboard-metrics-scraper   ClusterIP   10.100.12.31     <none>        8000/TCP   6m1s
 kubernetes-dashboard        ClusterIP   10.107.108.167   <none>        443/TCP    6m1s
 </pre></code>
+
 <pre><code>
 kubectl --namespace kubernetes-dashboard patch svc kubernetes-dashboard -p '{"spec": {"type": "NodePort"}}'
 </pre></code>
