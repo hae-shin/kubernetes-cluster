@@ -2,7 +2,7 @@
 
 Kubernetes Dashboard uygulamaları cluster üzerinde deploy ve troubleshoot etmek için kullanılan bir arayüzdür. Bunun dışında cluster kaynaklarını da yönetmek için kullanılabiliyor.
 
-Aşağıdaki adresten Kubernetes Dashboard kurulumu için hazır bir ***yaml*** çekiyoruz sunucumuza.
+- Aşağıdaki adresten Kubernetes Dashboard kurulumu için hazır bir ***yaml*** çekiyoruz sunucumuza.
 
 <pre><code>
 wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
@@ -22,7 +22,7 @@ recommended.yaml                         100%[==================================
 2022-11-10 14:50:30 (3.06 MB/s) - ‘recommended.yaml’ saved [7621/7621]
 </pre></code>
 
-Ardından dosyayı kubectl ile uygulamaya koyuyoruz. Gerekli namespace'den service'e configmap'e kadar bir çok Kubernetes nesnesini oluşturuyor.
+- Ardından dosyayı kubectl ile uygulamaya koyuyoruz. Gerekli namespace'den service'e configmap'e kadar bir çok Kubernetes nesnesini oluşturuyor.
 
 <pre><code>
 kubectl apply -f recommended.yaml 
@@ -46,7 +46,7 @@ service/dashboard-metrics-scraper created
 deployment.apps/dashboard-metrics-scraper created
 </pre></code>
 
-kubernetes-dashboard namespace'inde çalışan pod'ları aşağıdaki gibi listeleyebiliriz.
+- kubernetes-dashboard namespace'inde çalışan pod'ları aşağıdaki gibi listeleyebiliriz.
 
 <pre><code>
 kubectl get pods -n kubernetes-dashboard
@@ -58,7 +58,7 @@ dashboard-metrics-scraper-64bcc67c9c-jvhfv   1/1     Running   0          49s
 kubernetes-dashboard-66c887f759-4qdkv        1/1     Running   0          49s
 </pre></code>
 
-kubernetes-dashboard namespace'inde çalışan service'leri aşağıdaki gibi listeleyebiliriz.
+- kubernetes-dashboard namespace'inde çalışan service'leri aşağıdaki gibi listeleyebiliriz.
 
 <pre><code>
 kubectl get svc -n kubernetes-dashboard
@@ -69,10 +69,13 @@ NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)  
 dashboard-metrics-scraper   ClusterIP   10.100.12.31     <none>        8000/TCP   6m1s
 kubernetes-dashboard        ClusterIP   10.107.108.167   <none>        443/TCP    6m1s
 </pre></code>
-kubernetes-dashboard pod'larını dışarıdan erişime açmak için kubernetes-dashboard service'sinin type'ını değiştirip NodePort yapıyoruz.
+
+- kubernetes-dashboard pod'larını dışarıdan erişime açmak için kubernetes-dashboard service'sinin type'ını değiştirip NodePort yapıyoruz.
+
 <pre><code>
 kubectl --namespace kubernetes-dashboard patch svc kubernetes-dashboard -p '{"spec": {"type": "NodePort"}}'
 </pre></code>
+
 <pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl --namespace kubernetes-dashboard patch svc kubernetes-dashboard -p '{"spec": {"type": "NodePort"}}'
 service/kubernetes-dashboard patched
@@ -80,6 +83,9 @@ service/kubernetes-dashboard patched
 <pre><code>
 get svc -n kubernetes-dashboard kubernetes-dashboard -o yaml
 </pre></code>
+
+- kubernetes-dashboard namespace'indeki kubernetes-dashboard service'sinin ***yaml*** halini getirmek istersek;
+
 <pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get svc -n kubernetes-dashboard kubernetes-dashboard -o yaml
 apiVersion: v1
@@ -116,6 +122,9 @@ spec:
 status:
   loadBalancer: {}
 </pre></code>
+
+- service'i patch'ledikten sonra type'ı aşağıdaki gibi NodePort ve erişmek için hangi port'u kullanacağımızı görebiliyoruz.
+
 <pre><code>
 kubectl get svc -n kubernetes-dashboard
 </pre></code>
@@ -125,6 +134,7 @@ NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)  
 dashboard-metrics-scraper   ClusterIP   10.100.12.31     <none>        8000/TCP        7m50s
 kubernetes-dashboard        NodePort    10.107.108.167   <none>        443:31121/TCP   7m50s
 </pre></code>
+
 <pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ vim nodeport_dashboard_patch.yaml
 haeshin@master-ubuntu-2204-k8s:~$ cat nodeport_dashboard_patch.yaml 
@@ -143,7 +153,7 @@ haeshin@master-ubuntu-2204-k8s:~$ kubectl -n kubernetes-dashboard patch svc kube
 service/kubernetes-dashboard patched
 </pre></code>
 <pre><code>
-kubectl get deployments -n kubernetes-dashboard
+-kubectl get deployments -n kubernetes-dashboard
 </pre></code>
 <pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get deployments -n kubernetes-dashboard 
@@ -152,7 +162,7 @@ dashboard-metrics-scraper   1/1     1            1           10m
 kubernetes-dashboard        1/1     1            1           10m
 </pre></code>
 <pre><code>
-kubectl get pods -n kubernetes-dashboard
+-kubectl get pods -n kubernetes-dashboard
 </pre></code>
 <pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get pods -n kubernetes-dashboard
@@ -161,7 +171,7 @@ dashboard-metrics-scraper-64bcc67c9c-jvhfv   1/1     Running   0          11m
 kubernetes-dashboard-66c887f759-4qdkv        1/1     Running   0          11m
 </pre></code>
 <pre><code>
-kubectl get service -n kubernetes-dashboard 
+-kubectl get service -n kubernetes-dashboard 
 </pre></code>
 <pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get service -n kubernetes-dashboard 
