@@ -214,4 +214,7 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6ImtBa2lJYWtXQW50Sks0MjUteXFLZTkxRW93b2lwQkIxamxleGt2
 ![image](https://user-images.githubusercontent.com/116150600/201136093-59f1bb6f-0149-43f8-bb79-3de642f31117.png)
 
 
-***Kaynak:*** https://kubernetes.io/docs/concepts/services-networking/service/#external-traffic-policy
+***Kaynak:*** 
+
+https://kubernetes.io/docs/concepts/services-networking/service/#external-traffic-policy
+https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#deploying-the-dashboard-ui
