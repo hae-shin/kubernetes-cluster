@@ -1,7 +1,11 @@
 ## Kubernetes Dashboard Kurulum
 
-<pre><code>
 
+<pre><code>
+wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
+</pre></code>
+
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
 --2022-11-10 14:50:30--  https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
 Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.109.133, 185.199.110.133, ...
@@ -13,13 +17,18 @@ Saving to: ‘recommended.yaml’
 recommended.yaml                         100%[================================================================================>]   7.44K  --.-KB/s    in 0.002s  
 
 2022-11-10 14:50:30 (3.06 MB/s) - ‘recommended.yaml’ saved [7621/7621]
+</pre></code>
 
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ ls
 kube-flannel.yml  recommended.yaml
+</pre></code>
 
+<pre><code>
+kubectl apply -f recommended.yaml 
+</pre></code>
 
----
-
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl apply -f recommended.yaml 
 namespace/kubernetes-dashboard created
 serviceaccount/kubernetes-dashboard created
@@ -35,21 +44,36 @@ clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
 deployment.apps/kubernetes-dashboard created
 service/dashboard-metrics-scraper created
 deployment.apps/dashboard-metrics-scraper created
-
-
+</pre></code>
+<pre><code>
+kubectl get pods -n kubernetes-dashboard
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get pods -n kubernetes-dashboard
 NAME                                         READY   STATUS    RESTARTS   AGE
 dashboard-metrics-scraper-64bcc67c9c-jvhfv   1/1     Running   0          49s
 kubernetes-dashboard-66c887f759-4qdkv        1/1     Running   0          49s
-
+</pre></code>
+<pre><code>
+kubectl get svc -n kubernetes-dashboard
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get svc -n kubernetes-dashboard
 NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
 dashboard-metrics-scraper   ClusterIP   10.100.12.31     <none>        8000/TCP   6m1s
 kubernetes-dashboard        ClusterIP   10.107.108.167   <none>        443/TCP    6m1s
-
+</pre></code>
+<pre><code>
+kubectl --namespace kubernetes-dashboard patch svc kubernetes-dashboard -p '{"spec": {"type": "NodePort"}}'
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl --namespace kubernetes-dashboard patch svc kubernetes-dashboard -p '{"spec": {"type": "NodePort"}}'
 service/kubernetes-dashboard patched
-
+</pre></code>
+<pre><code>
+get svc -n kubernetes-dashboard kubernetes-dashboard -o yaml
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get svc -n kubernetes-dashboard kubernetes-dashboard -o yaml
 apiVersion: v1
 kind: Service
@@ -84,12 +108,17 @@ spec:
   type: NodePort
 status:
   loadBalancer: {}
-
+</pre></code>
+<pre><code>
+kubectl get svc -n kubernetes-dashboard
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get svc -n kubernetes-dashboard
 NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)         AGE
 dashboard-metrics-scraper   ClusterIP   10.100.12.31     <none>        8000/TCP        7m50s
 kubernetes-dashboard        NodePort    10.107.108.167   <none>        443:31121/TCP   7m50s
-
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ vim nodeport_dashboard_patch.yaml
 haeshin@master-ubuntu-2204-k8s:~$ cat nodeport_dashboard_patch.yaml 
 spec:
@@ -98,24 +127,42 @@ spec:
     port: 443
     protocol: TCP
     targetPort: 8443
-
+</pre></code>
+<pre><code>
+kubectl -n kubernetes-dashboard patch svc kubernetes-dashboard --patch "$(cat nodeport_dashboard_patch.yaml)"
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl -n kubernetes-dashboard patch svc kubernetes-dashboard --patch "$(cat nodeport_dashboard_patch.yaml)"
 service/kubernetes-dashboard patched
-
+</pre></code>
+<pre><code>
+kubectl get deployments -n kubernetes-dashboard
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get deployments -n kubernetes-dashboard 
 NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
 dashboard-metrics-scraper   1/1     1            1           10m
 kubernetes-dashboard        1/1     1            1           10m
-
+</pre></code>
+<pre><code>
+kubectl get pods -n kubernetes-dashboard
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get pods -n kubernetes-dashboard
 NAME                                         READY   STATUS    RESTARTS   AGE
 dashboard-metrics-scraper-64bcc67c9c-jvhfv   1/1     Running   0          11m
 kubernetes-dashboard-66c887f759-4qdkv        1/1     Running   0          11m
+</pre></code>
+<pre><code>
+kubectl get service -n kubernetes-dashboard 
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get service -n kubernetes-dashboard 
 NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)         AGE
 dashboard-metrics-scraper   ClusterIP   10.100.12.31     <none>        8000/TCP        11m
 kubernetes-dashboard        NodePort    10.107.108.167   <none>        443:32000/TCP   11m
-
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ vim admin-haeshin.yml
 haeshin@master-ubuntu-2204-k8s:~$ cat admin-haeshin.yml 
 ---
@@ -141,6 +188,8 @@ subjects:
   - kind: ServiceAccount
     name: admin-haeshin
     namespace: kube-system
+</pre></code>
+
 haeshin@master-ubuntu-2204-k8s:~$ kubectl apply -f admin-haeshin-rbac.yml 
 clusterrolebinding.rbac.authorization.k8s.io/admin-haeshin created
 haeshin@master-ubuntu-2204-k8s:~$ ls
