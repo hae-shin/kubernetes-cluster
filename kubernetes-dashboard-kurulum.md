@@ -22,7 +22,7 @@ recommended.yaml                         100%[==================================
 2022-11-10 14:50:30 (3.06 MB/s) - ‘recommended.yaml’ saved [7621/7621]
 </pre></code>
 
-Ardından dosyayı Kubernetes Cluster'da uygulamaya koyuyoruz. Gerekli namespace'den service'e configmap'e kadar bir çok Kubernetes nesnesini oluşturuyor.
+Ardından dosyayı kubectl ile uygulamaya koyuyoruz. Gerekli namespace'den service'e configmap'e kadar bir çok Kubernetes nesnesini oluşturuyor.
 
 <pre><code>
 kubectl apply -f recommended.yaml 
@@ -69,7 +69,7 @@ NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)  
 dashboard-metrics-scraper   ClusterIP   10.100.12.31     <none>        8000/TCP   6m1s
 kubernetes-dashboard        ClusterIP   10.107.108.167   <none>        443/TCP    6m1s
 </pre></code>
-
+kubernetes-dashboard pod'larını dışarıdan erişime açmak için kubernetes-dashboard service'sinin type'ını değiştirip NodePort yapıyoruz.
 <pre><code>
 kubectl --namespace kubernetes-dashboard patch svc kubernetes-dashboard -p '{"spec": {"type": "NodePort"}}'
 </pre></code>
@@ -212,3 +212,6 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6ImtBa2lJYWtXQW50Sks0MjUteXFLZTkxRW93b2lwQkIxamxleGt2
 ![image](https://user-images.githubusercontent.com/116150600/201135821-a88dc50a-284c-491a-948c-d9e08c199e7c.png)
 
 ![image](https://user-images.githubusercontent.com/116150600/201136093-59f1bb6f-0149-43f8-bb79-3de642f31117.png)
+
+
+***Kaynak:*** https://kubernetes.io/docs/concepts/services-networking/service/#external-traffic-policy
