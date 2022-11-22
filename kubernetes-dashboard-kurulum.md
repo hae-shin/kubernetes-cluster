@@ -216,5 +216,5 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6ImtBa2lJYWtXQW50Sks0MjUteXFLZTkxRW93b2lwQkIxamxleGt2
 
 ***Kaynak:*** 
 
-https://kubernetes.io/docs/concepts/services-networking/service/#external-traffic-policy
-https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#deploying-the-dashboard-ui
+- https://kubernetes.io/docs/concepts/services-networking/service/#external-traffic-policy
+- https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#deploying-the-dashboard-ui
