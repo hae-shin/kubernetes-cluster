@@ -234,9 +234,13 @@ kubectl create token admin-haeshin -n kube-system
 haeshin@master-ubuntu-2204-k8s:~$ kubectl create token admin-haeshin -n kube-system
 eyJhbGciOiJSUzI1NiIsImtpZCI6ImtBa2lJYWtXQW50Sks0MjUteXFLZTkxRW93b2lwQkIxamxleGt2VDgzeGsifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjY4MDk3Mzc4LCJpYXQiOjE2NjgwOTM3NzgsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJhZG1pbi1oYWVzaGluIiwidWlkIjoiNDk4MTAzNDUtODM2NS00ZGY4LTg2MTMtMTZhNGQ5OTExMjk1In19LCJuYmYiOjE2NjgwOTM3NzgsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphZG1pbi1oYWVzaGluIn0.aotmASqgx9yxpOrNF8JQgTaJv50LTMNFL4BfXzJBGvwb6tNKmk8h3F55w4gVZt1ZPbW3igqxGMogWKCgvAZkwr6sKzUyJOtPzo3KX7fDKlCsYhsZkRdx5A7zgTdzbyZYBVlYCpmibqrlLaae56QudUF-6tuPOa0kBRAHh815SVC5cT1pDYNVgBMGySqOJXqV9G47T7K47TMP72cW1d6Mjw8RZ_qx9LZZGNzmdTiROKGiAWsk0almzq-1ij5s2ZlYIS8-kano4VEtJU1eP9Yayf4ONviElR6yRUawqQPgg_8VIeOweoZvX7XLExbjRSEz9740cqWNuPRFvWqFLcWzTw
 </pre></code>
-
-
-
+- Arayüze erişmek için daha önceden ayarladığımız servis bilgilerini kullanıyoruz. Kubernetes Dashboard uygulamasının Master Node'da çalıştığını ve buradan 32000 portuna çıkış yaptığını biliyoruz. Tarayıcımızdan **https** ile 192.168.1.25:32000 adresine gidiyoruz.
+<pre><code>
+haeshin@master-ubuntu-2204-k8s:~$ kubectl get service -n kubernetes-dashboard 
+NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)         AGE
+dashboard-metrics-scraper   ClusterIP   10.100.12.31     <none>        8000/TCP        11m
+**kubernetes-dashboard**    NodePort    10.107.108.167   <none>      443:**32000**/TCP   11m
+</pre></code>
 
 ![image](https://user-images.githubusercontent.com/116150600/201135821-a88dc50a-284c-491a-948c-d9e08c199e7c.png)
 
