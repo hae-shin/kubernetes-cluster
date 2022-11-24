@@ -123,7 +123,7 @@ status:
   loadBalancer: {}
 </pre></code>
 
-- service'i patch'ledikten sonra type'ı aşağıdaki gibi NodePort ve erişmek için hangi port'u kullanacağımızı görebiliyoruz.
+- service'i patch'ledikten sonra type'ın aşağıdaki gibi NodePort olduğunu ve erişmek için hangi port'u kullanacağımızı görebiliyoruz.
 
 <pre><code>
 kubectl get svc -n kubernetes-dashboard
@@ -134,6 +134,7 @@ NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)  
 dashboard-metrics-scraper   ClusterIP   10.100.12.31     <none>        8000/TCP        7m50s
 kubernetes-dashboard        NodePort    10.107.108.167   <none>        443:31121/TCP   7m50s
 </pre></code>
+- bir önceki örnekte NodePort otomatik olarak 31121 olarak atanmıştı. Belirli bir port üzerinden Kubernetes Dashboard'a erişmek isterseniz aşağıdaki gibi mir yaml oluşturup devreye alıyoruz.
 
 <pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ vim nodeport_dashboard_patch.yaml
@@ -153,7 +154,7 @@ haeshin@master-ubuntu-2204-k8s:~$ kubectl -n kubernetes-dashboard patch svc kube
 service/kubernetes-dashboard patched
 </pre></code>
 <pre><code>
--kubectl get deployments -n kubernetes-dashboard
+kubectl get deployments -n kubernetes-dashboard
 </pre></code>
 <pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get deployments -n kubernetes-dashboard 
@@ -162,7 +163,7 @@ dashboard-metrics-scraper   1/1     1            1           10m
 kubernetes-dashboard        1/1     1            1           10m
 </pre></code>
 <pre><code>
--kubectl get pods -n kubernetes-dashboard
+kubectl get pods -n kubernetes-dashboard
 </pre></code>
 <pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get pods -n kubernetes-dashboard
@@ -171,7 +172,7 @@ dashboard-metrics-scraper-64bcc67c9c-jvhfv   1/1     Running   0          11m
 kubernetes-dashboard-66c887f759-4qdkv        1/1     Running   0          11m
 </pre></code>
 <pre><code>
--kubectl get service -n kubernetes-dashboard 
+kubectl get service -n kubernetes-dashboard 
 </pre></code>
 <pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get service -n kubernetes-dashboard 
