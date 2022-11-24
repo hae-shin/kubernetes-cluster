@@ -12,13 +12,23 @@ Kubernetes Cluster'ın monitor edilmesi önemli bir başlık. Cluster'ın belirl
 
  - **kube-prometheus** ise bir Kubernetes Cluster'ı izlemek için hazırlamış komple bir çözüm olarak github'da repo olarak yer almaktadır.
 
+<pre><code>
 git clone https://github.com/prometheus-operator/kube-prometheus.git
-
+</pre></code>
+<pre><code>
+cd kube-prometheus
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ ls
 build.sh            CONTRIBUTING.md      example.jsonnet  go.mod   jsonnetfile.json           kustomization.yaml  manifests   scripts
 CHANGELOG.md        developer-workspace  examples         go.sum   jsonnetfile.lock.json      LICENSE             README.md   tests
 code-of-conduct.md  docs                 experimental     jsonnet  kubescape-exceptions.json  Makefile            RELEASE.md
+</pre></code>
 
+<pre><code>
+kubectl create -f manifests/setup
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ kubectl create -f manifests/setup
 customresourcedefinition.apiextensions.k8s.io/alertmanagerconfigs.monitoring.coreos.com created
 customresourcedefinition.apiextensions.k8s.io/alertmanagers.monitoring.coreos.com created
@@ -29,12 +39,22 @@ customresourcedefinition.apiextensions.k8s.io/prometheusrules.monitoring.coreos.
 customresourcedefinition.apiextensions.k8s.io/servicemonitors.monitoring.coreos.com created
 customresourcedefinition.apiextensions.k8s.io/thanosrulers.monitoring.coreos.com created
 namespace/monitoring created
+</pre></code>
 
+<pre><code>
+kubectl get ns monitoring
+</pre></code>
+
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ kubectl get ns monitoring
 NAME         STATUS   AGE
 monitoring   Active   76s
+</pre></code>
 
-
+<pre><code>
+kubectl create -f manifests/
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ kubectl create -f manifests/
 alertmanager.monitoring.coreos.com/main created
 networkpolicy.networking.k8s.io/alertmanager-main created
@@ -148,8 +168,12 @@ prometheusrule.monitoring.coreos.com/prometheus-operator-rules created
 service/prometheus-operator created
 serviceaccount/prometheus-operator created
 servicemonitor.monitoring.coreos.com/prometheus-operator created
+</pre></code>
 
-
+<pre><code>
+kubectl get pods -n monitoring
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ kubectl get pods -n monitoring
 NAME                                   READY   STATUS    RESTARTS      AGE
 alertmanager-main-0                    2/2     Running   1 (57s ago)   79s
@@ -166,7 +190,11 @@ prometheus-adapter-757f9b4cf9-l6x7f    1/1     Running   0             3m29s
 prometheus-k8s-0                       2/2     Running   0             75s
 prometheus-k8s-1                       1/2     Running   0             74s
 prometheus-operator-67f59d65b8-6zzxr   2/2     Running   0             3m29s
-
+</pre></code>
+<pre><code>
+kubectl get svc -n monitoring
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ kubectl get svc -n monitoring
 NAME                    TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
 alertmanager-main       ClusterIP   10.108.222.85    <none>        9093/TCP,8080/TCP            9m1s
@@ -179,16 +207,17 @@ prometheus-adapter      ClusterIP   10.108.151.237   <none>        443/TCP      
 prometheus-k8s          ClusterIP   10.99.223.82     <none>        9090/TCP,8080/TCP            8m58s
 prometheus-operated     ClusterIP   None             <none>        9090/TCP                     6m43s
 prometheus-operator     ClusterIP   None             <none>        8443/TCP                     8m57s
+</pre></code>
 
 
-
-
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ kubectl --namespace monitoring patch svc prometheus-k8s -p '{"spec": {"type": "NodePort"}}'
 service/prometheus-k8s patched
 haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ kubectl --namespace monitoring patch svc alertmanager-main -p '{"spec": {"type": "NodePort"}}'
 service/alertmanager-main patched
 haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ kubectl --namespace monitoring patch svc grafana -p '{"spec": {"type": "NodePort"}}'
 service/grafana patched
+</pre></code>
 
 haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ kubectl -n monitoring get svc  | grep NodePort
 alertmanager-main       NodePort    10.108.222.85    <none>        9093:31426/TCP,8080:31696/TCP   16m
