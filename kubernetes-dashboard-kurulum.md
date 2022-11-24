@@ -239,10 +239,12 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6ImtBa2lJYWtXQW50Sks0MjUteXFLZTkxRW93b2lwQkIxamxleGt2
 haeshin@master-ubuntu-2204-k8s:~$ kubectl get service -n kubernetes-dashboard 
 NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)         AGE
 dashboard-metrics-scraper   ClusterIP   10.100.12.31     <none>        8000/TCP        11m
-**kubernetes-dashboard**    NodePort    10.107.108.167   <none>      443:**32000**/TCP   11m
+kubernetes-dashboard        NodePort    10.107.108.167   <none>        443:32000/TCP   11m
 </pre></code>
 
 ![image](https://user-images.githubusercontent.com/116150600/201135821-a88dc50a-284c-491a-948c-d9e08c199e7c.png)
+
+- İşaretli drop-down'dan namespace'i değiştirip altlarında çalışan kubernetes bileşenlerine dair ayrıntılı bilgi alabiliyoruz.
 
 ![image](https://user-images.githubusercontent.com/116150600/201136093-59f1bb6f-0149-43f8-bb79-3de642f31117.png)
 
