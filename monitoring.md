@@ -6,6 +6,12 @@ Kubernetes Cluster'ın monitor edilmesi önemli bir başlık. Cluster'ın belirl
 - **Grafana:** Prometheus'un topladığı bilgileri görselleştirir.
 - **Alertmanager:** Prometheus tarafında hazırlanmış kurallara göre oluşan alarmların yönetiminde kullanılır.
 
+
+
+![image](https://user-images.githubusercontent.com/116150600/203777938-1bb0dd5a-6bc4-44e1-8226-96fec86ce0e5.png)
+
+ - **kube-prometheus** ise bir Kubernetes Cluster'ı izlemek için hazırlamış komple bir çözüm olarak github'da repo olarak yer almaktadır.
+
 git clone https://github.com/prometheus-operator/kube-prometheus.git
 
 haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ ls
