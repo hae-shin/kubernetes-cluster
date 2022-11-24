@@ -1,4 +1,10 @@
-## Kubernetes Monitoring
+# Monitoring Kubernetes Cluster
+
+Kubernetes Cluster'ın monitor edilmesi önemli bir başlık. Cluster'ın belirli bir süre aralığındaki genel durumunu izleyebilmek mevcut sorunları çözmek ve ilerisi için plan yapabilmek açısından neredeyse zorunludur diyebiliriz. Monitoring aracı olarak ise Prometheus, Grafana ve Alertmanager hakim çözüm konumda. Biz ise burada daha önce kubeadm ile kurulumunu yaptığımız cluster'ı bu monitoring araçlarıyla nasıl izleriz sorusunu cevaplandıracağız.
+
+- **Prometheus:** Belirli zaman aralıklarında Kubernetes Cluster'dan metric'ler toplar. Bu metrikler işlemci, bellek, disk performansı, network vb. başlıklarda bilgi içerir.
+- **Grafana:** Prometheus'un topladığı bilgileri görselleştirir.
+- **Alertmanager:** Prometheus tarafında hazırlanmış kurallara göre oluşan alarmların yönetiminde kullanılır.
 
 git clone https://github.com/prometheus-operator/kube-prometheus.git
 
