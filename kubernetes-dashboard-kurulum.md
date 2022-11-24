@@ -134,7 +134,7 @@ NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)  
 dashboard-metrics-scraper   ClusterIP   10.100.12.31     <none>        8000/TCP        7m50s
 kubernetes-dashboard        NodePort    10.107.108.167   <none>        443:31121/TCP   7m50s
 </pre></code>
-- bir önceki örnekte NodePort otomatik olarak 31121 olarak atanmıştı. Belirli bir port üzerinden Kubernetes Dashboard'a erişmek isterseniz aşağıdaki gibi mir yaml oluşturup devreye alıyoruz.
+- Bir önceki örnekte NodePort otomatik olarak 31121 olarak atanmıştı. Belirli bir port üzerinden Kubernetes Dashboard'a erişmek isterseniz aşağıdaki gibi mir yaml oluşturup devreye alıyoruz.
 
 <pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ vim nodeport_dashboard_patch.yaml
@@ -153,6 +153,7 @@ kubectl -n kubernetes-dashboard patch svc kubernetes-dashboard --patch "$(cat no
 haeshin@master-ubuntu-2204-k8s:~$ kubectl -n kubernetes-dashboard patch svc kubernetes-dashboard --patch "$(cat nodeport_dashboard_patch.yaml)"
 service/kubernetes-dashboard patched
 </pre></code>
+- kubernetes-dashboard namespace'indeki mevcut deployment'ları görüntülemek için;
 <pre><code>
 kubectl get deployments -n kubernetes-dashboard
 </pre></code>
@@ -162,6 +163,7 @@ NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
 dashboard-metrics-scraper   1/1     1            1           10m
 kubernetes-dashboard        1/1     1            1           10m
 </pre></code>
+- kubernetes-dashboard namespace'indeki mevcut podları'ları görüntülemek için;
 <pre><code>
 kubectl get pods -n kubernetes-dashboard
 </pre></code>
@@ -171,6 +173,7 @@ NAME                                         READY   STATUS    RESTARTS   AGE
 dashboard-metrics-scraper-64bcc67c9c-jvhfv   1/1     Running   0          11m
 kubernetes-dashboard-66c887f759-4qdkv        1/1     Running   0          11m
 </pre></code>
+- kubernetes-dashboard namespace'indeki mevcut service'leri görüntülemek için;
 <pre><code>
 kubectl get service -n kubernetes-dashboard 
 </pre></code>
@@ -180,6 +183,8 @@ NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)  
 dashboard-metrics-scraper   ClusterIP   10.100.12.31     <none>        8000/TCP        11m
 kubernetes-dashboard        NodePort    10.107.108.167   <none>        443:32000/TCP   11m
 </pre></code>
+## Kubernetes Dashboard için Admin Kullanıcısı Oluşturma
+- İlk önce ServiceAccount tipinde bir nesne oluşturuyoruz aşağıdaki gibi;
 <pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ vim admin-haeshin.yml
 haeshin@master-ubuntu-2204-k8s:~$ cat admin-haeshin.yml 
@@ -191,6 +196,9 @@ metadata:
   namespace: kube-system
 haeshin@master-ubuntu-2204-k8s:~$ kubectl apply -f admin-haeshin.yml 
 serviceaccount/admin-haeshin created
+</pre></code>
+- Ardından ClusterRoleBinding tipinde bir nesne oluşturup daha önce oluşturduğumuz ServiceAccount'u buraya bağlıyoruz.
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ vim admin-haeshin-rbac.yml
 haeshin@master-ubuntu-2204-k8s:~$ cat admin-haeshin-rbac.yml 
 ---
@@ -207,18 +215,28 @@ subjects:
     name: admin-haeshin
     namespace: kube-system
 </pre></code>
-
+<pre><code>
+kubectl apply -f admin-haeshin-rbac.yml
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl apply -f admin-haeshin-rbac.yml 
 clusterrolebinding.rbac.authorization.k8s.io/admin-haeshin created
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ ls
 admin-haeshin-rbac.yml  admin-haeshin.yml  kube-flannel.yml  nodeport_dashboard_patch.yaml  recommended.yaml
-
+</pre></code>
+- Kubernetes Dashboard'ına giriş yapabilmek için kullanıcımız için token oluşturuyoruz.
+<pre><code>
+kubectl create token admin-haeshin -n kube-system
+</pre></code>
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~$ kubectl create token admin-haeshin -n kube-system
 eyJhbGciOiJSUzI1NiIsImtpZCI6ImtBa2lJYWtXQW50Sks0MjUteXFLZTkxRW93b2lwQkIxamxleGt2VDgzeGsifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjY4MDk3Mzc4LCJpYXQiOjE2NjgwOTM3NzgsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJhZG1pbi1oYWVzaGluIiwidWlkIjoiNDk4MTAzNDUtODM2NS00ZGY4LTg2MTMtMTZhNGQ5OTExMjk1In19LCJuYmYiOjE2NjgwOTM3NzgsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphZG1pbi1oYWVzaGluIn0.aotmASqgx9yxpOrNF8JQgTaJv50LTMNFL4BfXzJBGvwb6tNKmk8h3F55w4gVZt1ZPbW3igqxGMogWKCgvAZkwr6sKzUyJOtPzo3KX7fDKlCsYhsZkRdx5A7zgTdzbyZYBVlYCpmibqrlLaae56QudUF-6tuPOa0kBRAHh815SVC5cT1pDYNVgBMGySqOJXqV9G47T7K47TMP72cW1d6Mjw8RZ_qx9LZZGNzmdTiROKGiAWsk0almzq-1ij5s2ZlYIS8-kano4VEtJU1eP9Yayf4ONviElR6yRUawqQPgg_8VIeOweoZvX7XLExbjRSEz9740cqWNuPRFvWqFLcWzTw
-
-
-
 </pre></code>
+
+
+
 
 ![image](https://user-images.githubusercontent.com/116150600/201135821-a88dc50a-284c-491a-948c-d9e08c199e7c.png)
 
