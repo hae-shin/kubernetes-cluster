@@ -15,6 +15,7 @@ Kubernetes Cluster'ın monitor edilmesi önemli bir başlık. Cluster'ın belirl
 <pre><code>
 git clone https://github.com/prometheus-operator/kube-prometheus.git
 </pre></code>
+-  İlgili dizine gidip dosyaları listeliyoruz.
 <pre><code>
 cd kube-prometheus
 </pre></code>
@@ -24,7 +25,7 @@ build.sh            CONTRIBUTING.md      example.jsonnet  go.mod   jsonnetfile.j
 CHANGELOG.md        developer-workspace  examples         go.sum   jsonnetfile.lock.json      LICENSE             README.md   tests
 code-of-conduct.md  docs                 experimental     jsonnet  kubescape-exceptions.json  Makefile            RELEASE.md
 </pre></code>
-
+- manifests/setup dizini altında bir takım **yaml** dosyası bulunuyor. Gerekli CustomResourceDefination'ları oluşturabilmek için bu dosyaların tümünü uygulamaya alıyoruz. Ayrıca monitoring araçlarının çalışacağı namespace'i oluşturuyoruz.
 <pre><code>
 kubectl create -f manifests/setup
 </pre></code>
