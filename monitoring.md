@@ -41,7 +41,7 @@ customresourcedefinition.apiextensions.k8s.io/servicemonitors.monitoring.coreos.
 customresourcedefinition.apiextensions.k8s.io/thanosrulers.monitoring.coreos.com created
 namespace/monitoring created
 </pre></code>
-
+- monitoring namespace'ini görüntülüyoruz.
 <pre><code>
 kubectl get ns monitoring
 </pre></code>
@@ -51,7 +51,7 @@ haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ kubectl get ns monitoring
 NAME         STATUS   AGE
 monitoring   Active   76s
 </pre></code>
-
+- Ardından manifest dizini altında **yaml** olarak bulunan monitoring araçlarını (Prometheus, Grafana, Alertmanager) ve bu araçların çalışması için gerekli kubernetes nesnelerini(configmap, service, networkpolicy vb.) oluşturuyoruz.
 <pre><code>
 kubectl create -f manifests/
 </pre></code>
