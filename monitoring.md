@@ -170,7 +170,7 @@ service/prometheus-operator created
 serviceaccount/prometheus-operator created
 servicemonitor.monitoring.coreos.com/prometheus-operator created
 </pre></code>
-
+- monitoring namespace'indeki podları görüntelemek için;
 <pre><code>
 kubectl get pods -n monitoring
 </pre></code>
@@ -192,6 +192,7 @@ prometheus-k8s-0                       2/2     Running   0             75s
 prometheus-k8s-1                       1/2     Running   0             74s
 prometheus-operator-67f59d65b8-6zzxr   2/2     Running   0             3m29s
 </pre></code>
+- monitoring namespace'indeki service'leri görüntelemek için;
 <pre><code>
 kubectl get svc -n monitoring
 </pre></code>
@@ -209,8 +210,7 @@ prometheus-k8s          ClusterIP   10.99.223.82     <none>        9090/TCP,8080
 prometheus-operated     ClusterIP   None             <none>        9090/TCP                     6m43s
 prometheus-operator     ClusterIP   None             <none>        8443/TCP                     8m57s
 </pre></code>
-
-
+- Uygulamalarımızı dışarıdan erişilebilir hale getirmek için service'lerin type'ını NodePort olarak belirliyoruz;
 <pre><code>
 haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ kubectl --namespace monitoring patch svc prometheus-k8s -p '{"spec": {"type": "NodePort"}}'
 service/prometheus-k8s patched
@@ -219,12 +219,13 @@ service/alertmanager-main patched
 haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ kubectl --namespace monitoring patch svc grafana -p '{"spec": {"type": "NodePort"}}'
 service/grafana patched
 </pre></code>
-
+- NodePort ile dışarı açılmış service'leri ve hangi port'ta yayın yaptıklarını görüntülemek için;
+<pre><code>
 haeshin@master-ubuntu-2204-k8s:~/kube-prometheus$ kubectl -n monitoring get svc  | grep NodePort
 alertmanager-main       NodePort    10.108.222.85    <none>        9093:31426/TCP,8080:31696/TCP   16m
 grafana                 NodePort    10.109.185.203   <none>        3000:32291/TCP                  16m
 prometheus-k8s          NodePort    10.99.223.82     <none>        9090:32335/TCP,8080:31338/TCP   16m
-
+</pre></code>
 
 ![image](https://user-images.githubusercontent.com/116150600/201350278-1fba01db-5abc-487b-8060-5f28d528c2eb.png)
 
