@@ -170,7 +170,7 @@ service/prometheus-operator created
 serviceaccount/prometheus-operator created
 servicemonitor.monitoring.coreos.com/prometheus-operator created
 </pre></code>
-- monitoring namespace'indeki podları görüntelemek için;
+- monitoring namespace'indeki podları görüntülemek için;
 <pre><code>
 kubectl get pods -n monitoring
 </pre></code>
@@ -192,7 +192,7 @@ prometheus-k8s-0                       2/2     Running   0             75s
 prometheus-k8s-1                       1/2     Running   0             74s
 prometheus-operator-67f59d65b8-6zzxr   2/2     Running   0             3m29s
 </pre></code>
-- monitoring namespace'indeki service'leri görüntelemek için;
+- monitoring namespace'indeki service'leri görüntülemek için;
 <pre><code>
 kubectl get svc -n monitoring
 </pre></code>
