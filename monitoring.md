@@ -250,7 +250,7 @@ prometheus-k8s          NodePort    10.99.223.82     <none>        9090:32335/TC
 
 - Aşağıdaki link'te hazır bir Dashboard olan "Node Exporter Full" dashboard'unun ID'sini görüntüleyebilir bu ID ile dashboard'ı source'unu Prometheus olarak belirleyip import edebiliriz.
 
-https://grafana.com/grafana/dashboards/1860-node-exporter-full/
+**Link**: https://grafana.com/grafana/dashboards/1860-node-exporter-full/
 
 - Dashboard'da her bir Node özelinde grafikleri görüntüleyebiliriz. Söz konusu dashboard Node'ların (CPU, RAM, DISK ve Network Trafiği) gibi Prometheus tarafından toplanan bilgilerini grafikleştiriyor.
 
