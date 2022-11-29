@@ -70,3 +70,7 @@ systemd cgroup driver'ını kullanmak istiyorsak /etc/containerd/config.toml dos
             ShimCgroup = ""
             SystemdCgroup = true
 </pre></code>
+
+**Kaynak:**
+- https://kubernetes.io/docs/setup/production-environment/container-runtimes/
+- https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cgroup-drivers
