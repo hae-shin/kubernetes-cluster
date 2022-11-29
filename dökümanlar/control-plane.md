@@ -5,3 +5,4 @@ Control Plane adı üstünde tüm cluster'ın kontrol edildiği ve sürdürüld�
 
 ![kubernetes-cluster](https://github.com/hae-shin/kubernetes-cluster/blob/main/kubernetes-cluster.png)
 
+**Kaynak**: https://kubernetes.io/docs/concepts/overview/components/#control-plane-components
