@@ -252,7 +252,7 @@ prometheus-k8s          NodePort    10.99.223.82     <none>        9090:32335/TC
 
 **Link**: https://grafana.com/grafana/dashboards/1860-node-exporter-full/
 
-- Dashboard'da her bir Node özelinde grafikleri görüntüleyebiliriz. Söz konusu dashboard Node'ların (CPU, RAM, DISK ve Network Trafiği) gibi Prometheus tarafından toplanan bilgilerini grafikleştiriyor.
+- Dashboard'da her bir Node özelinde grafikleri görüntüleyebiliriz. Söz konusu dashboard Node'ların (CPU, RAM, Disk, Network Trafiği vb.) gibi Prometheus tarafından toplanan bilgilerini grafikleştiriyor.
 
 ![image](https://user-images.githubusercontent.com/116150600/201361195-79ec12b9-8079-4265-816d-2e2df223af76.png)
 
