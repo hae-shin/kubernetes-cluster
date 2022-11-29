@@ -6,4 +6,4 @@ Cluster'da birden fazla controller uygulama çalışmaktadır. Örneğin Node'la
 ![image](https://github.com/hae-shin/kubernetes-cluster/blob/main/kubernetes-cluster.png)
 
 
-**Kaynak:** https://kubernetes.io/docs/concepts/overview/components/
+**Kaynak:** https://kubernetes.io/docs/concepts/overview/components/#kube-controller-manager
