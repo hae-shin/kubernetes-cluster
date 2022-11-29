@@ -27,7 +27,14 @@ sudo kubeadm config images pull --cri-socket /var/run/crio/crio.sock
 sudo kubeadm config images pull --cri-socket /run/containerd/containerd.sock
 sudo kubeadm config images pull --cri-socket /run/cri-dockerd.sock 
 </pre></code>
-Şimdi kubeadm ile cluster kurulumunu başlatalım.
+
+kubeadm ile cluster kurulumunu başlatırken bazı parametreler kullanabiliriz aşağıdaki gibi; gerçekleştireceğiz.
+
+- **--control-plane-endpoint :**  control-plane'e bağlı tüm Node'lar için ortak bir endpoint oluştur DNS ihtiyacını karşılar.
+- **--pod-network-cidr :** CIDR üzerinde pod'lar için network oluşturur.
+- **--cri-socket :** Eğer birden fazla konteyner çalışma ortamı kullanıyorsanız onlardan birini seçmenizi sağlar.
+- 
+Biz burada sadece tek bir parametre kullanarak kurulumu başlatıyoruz.
 <pre><code>
 sudo kubeadm init \
   --pod-network-cidr=10.244.0.0/16
